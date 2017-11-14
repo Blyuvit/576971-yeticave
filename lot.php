@@ -1,12 +1,38 @@
 <?php
 
-// ставки пользователей, которыми надо заполнить таблицу
 $bets = [
     ['name' => 'Иван', 'price' => 11500, 'ts' => strtotime('-' . rand(1, 50) .' minute')],
     ['name' => 'Константин', 'price' => 11000, 'ts' => strtotime('-' . rand(1, 18) .' hour')],
     ['name' => 'Евгений', 'price' => 10500, 'ts' => strtotime('-' . rand(25, 50) .' hour')],
     ['name' => 'Семён', 'price' => 10000, 'ts' => strtotime('last week')]
 ];
+
+$betsqty = count($bets);
+
+function bettimeformat ($bettime)
+{
+    $now = strtotime('now');
+    $timediff=($now-$bettime)/3600;
+    
+    if ($timediff<24)
+    {
+        if ($timediff<1)
+        {
+            $timediff = $timediff*60;
+            $timepassed = floor($timediff)." минут назад";
+        }
+        else 
+        {
+            $timepassed = floor($timediff)." часов назад";
+        }
+    }
+    else 
+    {
+        $timepassed=date("d.m.y", $bettime)." в ".date("H:i", $bettime);
+    }
+    return $timepassed;
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -108,15 +134,16 @@ $bets = [
                     </form>
                 </div>
                 <div class="history">
-                    <h3>История ставок (<span>4</span>)</h3>
-                    <!-- заполните эту таблицу данными из массива $bets-->
-                    <table class="history__list">
-                        <tr class="history__item">
-                            <td class="history__name"><!-- имя автора--></td>
-                            <td class="history__price"><!-- цена--> р</td>
-                            <td class="history__time"><!-- дата в человеческом формате--></td>
-                        </tr>
-                    </table>
+                    <h3>История ставок (<span><?=$betsqty ?></span>)</h3>
+                    <?php foreach ($bets as $key => $value): ?>
+                        <table class="history__list">
+                            <tr class="history__item">
+                                <td class="history__name"><?=$value['name'] ?></td>
+                                <td class="history__price"><?=$value['price'] ?> р</td>
+                                <td class="history__time"><?=bettimeformat($value['ts']); ?></td>
+                            </tr>
+                        </table>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
