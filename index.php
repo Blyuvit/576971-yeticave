@@ -49,37 +49,37 @@ $cats = [
 $lots = [
             [
                 'title'=>'2014 Rossignol District Snowboard',
-                'category'=>'Доски и лыжи', 
+                'category'=>0, 
                 'price'=>10999, 
                 'url'=>'img/lot-1.jpg'
             ], 
             [
                  'title'=>'DC Ply Mens 2016/2017 Snowboard',
-                 'category'=>'Доски и лыжи', 
+                 'category'=>0, 
                  'price'=>159999, 
                  'url'=>'img/lot-2.jpg'
             ], 
             [
                  'title'=>'Крепления Union Contact Pro 2015 года размер L/XL',
-                 'category'=>'Крепления', 
+                 'category'=>1, 
                  'price'=>8000, 
                  'url'=>'img/lot-3.jpg'
             ], 
             [
                  'title'=>'Ботинки для сноуборда DC Mutiny Charocal',
-                 'category'=>'Ботинки', 
+                 'category'=>2, 
                  'price'=>10999, 
                  'url'=>'img/lot-4.jpg'
             ], 
             [
                  'title'=>'Куртка для сноуборда DC Mutiny Charocal',
-                 'category'=>'Одежда', 
+                 'category'=>3, 
                  'price'=>7500, 
                  'url'=>'img/lot-5.jpg'
             ], 
             [
                  'title'=>'Маска Oakley Canopy',
-                 'category'=>'Разное', 
+                 'category'=>5, 
                  'price'=>5400, 
                  'url'=>'img/lot-6.jpg'
             ]
@@ -156,7 +156,7 @@ $lots = [
                             <img src="<?=$value['url']; ?>" width="350" height="260" alt="Сноуборд">
                         </div>
                         <div class="lot__info">
-                            <span class="lot__category"><?=$value['category']; ?></span>
+                            <span class="lot__category"><?=$cats[$value['category']]['cat']; ?></span>
                             <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$value['title']; ?></a></h3>
                             <div class="lot__state">
                                 <div class="lot__rate">
