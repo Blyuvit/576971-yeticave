@@ -38,6 +38,6 @@ function bettimeformat ($bettime)
         $timepassed=date("d.m.y", $bettime)." в ".date("H:i", $bettime);
     }
     return $timepassed;
-};
+}
 
 ?>
