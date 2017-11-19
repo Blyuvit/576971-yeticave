@@ -1,19 +1,15 @@
 <?php
 
-// Часовой пояс - Московское время
 date_default_timezone_set('Europe/Moscow');
 
-// Оставшееся время в формате ЧЧ:ММ
 $lot_time_remaining = "00:00";
 
-// Временная метка для полночи следующего дня
 $tomorrow = strtotime('tomorrow midnight');
 
-// Временная метка для настоящего времени
 $now = strtotime('now');
 
-// Оставшееся время до начала следующих суток
 $lot_time_remaining = gmdate("H:i", $tomorrow - $now);
+
 ?>
 <div class="container">
     <section class="promo">
@@ -39,7 +35,7 @@ $lot_time_remaining = gmdate("H:i", $tomorrow - $now);
                     </div>
                     <div class="lot__info">
                         <span class="lot__category"><?=htmlspecialchars($cats[$value['category']]['cat']); ?></span>
-                        <h3 class="lot__title"><a class="text-link" href="lot.html"><?=htmlspecialchars($value['title']); ?></a></h3>
+                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$key ?>"><?=htmlspecialchars($value['title']); ?></a></h3>
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
