@@ -19,7 +19,7 @@ if (!$lot) {
 
 $page_content = renderTemplate('templates/lot.php', ['lot' => $lot, 'bets' => $bets, 'cats' => $cats]);
 
-$layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => $lot['title'], 'cats' => $cats]);
+$layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => $lot['lot-name'], 'cats' => $cats]);
 
 echo $layout_content;
 

@@ -15,23 +15,14 @@ $betsqty = count($bets);
             </ul>
         </nav>
         <section class="lot-item container">
-            <h2><?=$lot['title'] ?></h2>
+            <h2><?=$lot['lot-name'] ?></h2>
             <div class="lot-item__content">
                 <div class="lot-item__left">
                     <div class="lot-item__image">
-                        <img src="<?=$lot['url'] ?>" width="730" height="548" alt="Сноуборд">
+                        <img src="<?=$lot['url'] ?>" width="730" height="548" alt="Изображение лота">
                     </div>
                     <p class="lot-item__category">Категория: <span><?=$cats[$lot['category']]['cat'] ?></span></p>
-                    <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
-                        снег
-                        мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
-                        снаряд
-                        отличной гибкостью и отзывчивостью, а симметричная геометрия в сочетании с классическим прогибом
-                        кэмбер
-                        позволит уверенно держать высокие скорости. А если к концу катального дня сил совсем не останется,
-                        просто
-                        посмотрите на Вашу доску и улыбнитесь, крутая графика от Шона Кливера еще никого не оставляла
-                    равнодушным.</p>
+                    <p class="lot-item__description"><?=$lot['message'] ?></p>
                 </div>
                 <div class="lot-item__right">
                     <div class="lot-item__state">
@@ -41,7 +32,7 @@ $betsqty = count($bets);
                         <div class="lot-item__cost-state">
                             <div class="lot-item__rate">
                                 <span class="lot-item__amount">Текущая цена</span>
-                                <span class="lot-item__cost"><?=$lot['price'] ?></span>
+                                <span class="lot-item__cost"><?=$lot['lot-rate'] ?></span>
                             </div>
                             <div class="lot-item__min-cost">
                                 Мин. ставка <span>12 000 р</span>
@@ -61,7 +52,7 @@ $betsqty = count($bets);
                             <table class="history__list">
                                 <tr class="history__item">
                                     <td class="history__name"><?=$value['name'] ?></td>
-                                    <td class="history__price"><?=$value['price'] ?> р</td>
+                                    <td class="history__price"><?=$value['lot-rate'] ?> р</td>
                                     <td class="history__time"><?=bettimeformat($value['ts']); ?></td>
                                 </tr>
                             </table>

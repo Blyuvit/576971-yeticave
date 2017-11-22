@@ -48,48 +48,63 @@ $cats = [
 
 $lots = [
     [
-      'title' => '2014 Rossignol District Snowboard',
+      'lot-name' => '2014 Rossignol District Snowboard',
       'category' => 0, 
-      'price' => 10999, 
-      'url' => 'img/lot-1.jpg'
+      'lot-rate' => 10999, 
+      'url' => 'img/lot-1.jpg',
+      'message' => null
     ], 
     [
-     'title' => 'DC Ply Mens 2016/2017 Snowboard',
+     'lot-name' => 'DC Ply Mens 2016/2017 Snowboard',
      'category' => 0, 
-     'price' => 159999, 
-     'url' => 'img/lot-2.jpg'
+     'lot-rate' => 159999, 
+     'url' => 'img/lot-2.jpg',
+     'message' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
+                        снег
+                        мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
+                        снаряд
+                        отличной гибкостью и отзывчивостью, а симметричная геометрия в сочетании с классическим прогибом
+                        кэмбер
+                        позволит уверенно держать высокие скорости. А если к концу катального дня сил совсем не останется,
+                        просто
+                        посмотрите на Вашу доску и улыбнитесь, крутая графика от Шона Кливера еще никого не оставляла
+                    равнодушным.'
    ], 
    [
-     'title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+     'lot-name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
      'category' => 1, 
-     'price' => 8000, 
-     'url' => 'img/lot-3.jpg'
+     'lot-rate' => 8000, 
+     'url' => 'img/lot-3.jpg',
+     'message' => null
    ], 
    [
-     'title' => 'Ботинки для сноуборда DC Mutiny Charocal',
+     'lot-name' => 'Ботинки для сноуборда DC Mutiny Charocal',
      'category' => 2, 
-     'price' => 10999, 
-     'url' => 'img/lot-4.jpg'
+     'lot-rate' => 10999, 
+     'url' => 'img/lot-4.jpg',
+     'message' => null
    ], 
    [
-     'title' => 'Куртка для сноуборда DC Mutiny Charocal',
+     'lot-name' => 'Куртка для сноуборда DC Mutiny Charocal',
      'category' => 3, 
-     'price' => 7500, 
-     'url' => 'img/lot-5.jpg'
+     'lot-rate' => 7500, 
+     'url' => 'img/lot-5.jpg',
+     'message' => null
    ], 
    [
-     'title' => 'Маска Oakley Canopy',
+     'lot-name' => 'Маска Oakley Canopy',
      'category' => 5, 
-     'price' => 5400, 
-     'url' => 'img/lot-6.jpg'
+     'lot-rate' => 5400, 
+     'url' => 'img/lot-6.jpg',
+     'message' => null
    ]
 ];
 
 $bets = [
-    ['name' => 'Иван', 'price' => 11500, 'ts' => strtotime('-' . rand(1, 50) .' minute')],
-    ['name' => 'Константин', 'price' => 11000, 'ts' => strtotime('-' . rand(1, 18) .' hour')],
-    ['name' => 'Евгений', 'price' => 10500, 'ts' => strtotime('-' . rand(25, 50) .' hour')],
-    ['name' => 'Семён', 'price' => 10000, 'ts' => strtotime('last week')]
+    ['name' => 'Иван', 'lot-rate' => 11500, 'ts' => strtotime('-' . rand(1, 50) .' minute')],
+    ['name' => 'Константин', 'lot-rate' => 11000, 'ts' => strtotime('-' . rand(1, 18) .' hour')],
+    ['name' => 'Евгений', 'lot-rate' => 10500, 'ts' => strtotime('-' . rand(25, 50) .' hour')],
+    ['name' => 'Семён', 'lot-rate' => 10000, 'ts' => strtotime('last week')]
 ];
 
 ?>
