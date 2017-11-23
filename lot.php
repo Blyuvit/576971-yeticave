@@ -8,12 +8,9 @@ $lot = null;
 if (isset($_GET['lot_id'])) {
     $lot_id = $_GET['lot_id'];
 
-    foreach ($lots as $key => $item) {
-        if ($key == $lot_id) {
-            $lot = $item;
-            break;
-        }       
-    }
+    if (array_key_exists($lot_id, $lots)) {
+    	$lot = $lots[$lot_id];
+    }   
 }
 
 if (!$lot) {
@@ -22,7 +19,7 @@ if (!$lot) {
 
 $page_content = renderTemplate('templates/lot.php', ['lot' => $lot, 'bets' => $bets, 'cats' => $cats]);
 
-$layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => $lot['title'], 'cats' => $cats]);
+$layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => $lot['lot-name'], 'cats' => $cats]);
 
 echo $layout_content;
 

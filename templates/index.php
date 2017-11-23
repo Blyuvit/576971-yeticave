@@ -35,11 +35,11 @@ $lot_time_remaining = gmdate("H:i", $tomorrow - $now);
                     </div>
                     <div class="lot__info">
                         <span class="lot__category"><?=htmlspecialchars($cats[$value['category']]['cat']); ?></span>
-                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$key ?>"><?=htmlspecialchars($value['title']); ?></a></h3>
+                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$key ?>"><?=htmlspecialchars($value['lot-name']); ?></a></h3>
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=htmlspecialchars($value['price']); ?><b class="rub">р</b></span>
+                                <span class="lot__cost"><?=htmlspecialchars($value['lot-rate']); ?><b class="rub">р</b></span>
                             </div>
                             <div class="lot__timer timer">
                                 <?=$lot_time_remaining;?>
