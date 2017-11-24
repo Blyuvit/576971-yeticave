@@ -3,6 +3,14 @@
 require_once ('functions.php');
 require_once ('userdata.php');
 
+if(!isset($_SESSION)) {
+    session_start();
+}
+if(!isset($_SESSION['user'])) {
+	http_response_code(403);
+    exit ();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$required = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date', 'url'];

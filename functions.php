@@ -40,4 +40,15 @@ function bettimeformat ($bettime)
     return $timepassed;
 }
 
+function searchUserByEmail($email, $users) {
+    $result = null;
+    foreach ($users as $user) {
+        if ($email == $user['email']) {
+            $result = $user;
+            break;
+        }
+    }
+    return $result;
+}
+
 ?>
