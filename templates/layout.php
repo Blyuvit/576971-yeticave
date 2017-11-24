@@ -1,9 +1,11 @@
 <?php
-$is_auth = (bool) rand(0, 1);
-
-$user_name = 'Константин';
-$user_avatar = 'img/user.jpg';
-
+if(!isset($_SESSION)) {
+    session_start();
+}
+if($is_auth = isset($_SESSION['user'])) {
+    $user_name = $_SESSION['user']['name'];
+    $user_avatar = $_SESSION['user']['avatar'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -29,18 +31,21 @@ $user_avatar = 'img/user.jpg';
             <nav class="user-menu">
                 <?php if ($is_auth == true): ?>
                     <div class="user-menu__image">
-                        <img src="<?=$user_avatar?>" width="40" height="40" alt="Пользователь">
+                        <img src="<?=$user_avatar?>" width="40" height="40" alt="">
                     </div>
                     <div class="user-menu__logged">
                         <p><?=$user_name?></p>
                     </div>
+                        <div class="user-menu__logged" style="margin-left: 15px">
+                            <a href="logout.php">Выйти</a>
+                        </div>
                 <?php else: ?>
                     <ul class="user-menu__list">
                         <li class="user-menu__item">
                             <a href="#">Регистрация</a>
                         </li>
                         <li class="user-menu__item">
-                            <a href="#">Вход</a>
+                            <a href="/login.php">Вход</a>
                         </li>
                     </ul>
                 <?php endif; ?>

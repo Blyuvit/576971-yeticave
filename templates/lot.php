@@ -2,6 +2,10 @@
 
 $betsqty = count($bets);
 
+if(!isset($_SESSION)) {
+    session_start();
+}
+
 ?>
 <div>
     <?php if (isset($lot)): ?>
@@ -25,6 +29,7 @@ $betsqty = count($bets);
                     <p class="lot-item__description"><?=$lot['message'] ?></p>
                 </div>
                 <div class="lot-item__right">
+                <?php if (isset($_SESSION['user'])) : ?>
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
                             10:54:12
@@ -46,6 +51,7 @@ $betsqty = count($bets);
                             <button type="submit" class="button">Сделать ставку</button>
                         </form>
                     </div>
+                <?php endif; ?>
                     <div class="history">
                         <h3>История ставок (<span><?=$betsqty ?></span>)</h3>
                         <?php foreach ($bets as $key => $value): ?>
