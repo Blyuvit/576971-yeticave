@@ -29,7 +29,7 @@ if(!isset($_SESSION)) {
                     <p class="lot-item__description"><?=$lot['message'] ?></p>
                 </div>
                 <div class="lot-item__right">
-                <?php if (isset($_SESSION['user'])) : ?>
+                <?php if (isset($_SESSION['user']) && (!searchLotRate($lot_id, $rates))) : ?>
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
                             10:54:12
@@ -43,7 +43,9 @@ if(!isset($_SESSION)) {
                                 Мин. ставка <span>12 000 р</span>
                             </div>
                         </div>
-                        <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
+                        <form class="lot-item__form" action="addrate.php" method="post">
+                            <input hidden name="time" value="<?=strtotime('now') ?>">
+                            <input hidden name="lotid" value="<?=$lot_id ?>">
                             <p class="lot-item__form-item">
                                 <label for="cost">Ваша ставка</label>
                                 <input id="cost" type="number" name="cost" placeholder="12 000">

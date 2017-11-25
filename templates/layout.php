@@ -26,7 +26,7 @@ if($is_auth = isset($_SESSION['user'])) {
                 <input type="search" name="search" placeholder="Поиск лота">
                 <input class="main-header__search-btn" type="submit" name="find" value="Найти">
             </form>
-            <a class="main-header__add-lot button" href="add.php">Добавить лот</a>
+            <a class="main-header__add-lot button" href="addlot.php">Добавить лот</a>
 
             <nav class="user-menu">
                 <?php if ($is_auth == true): ?>
