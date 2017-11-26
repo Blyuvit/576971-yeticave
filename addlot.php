@@ -46,14 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 	if (count($errors)) {
-		$page_content = renderTemplate('templates/add.php', ['cats' => $cats, 'errors' => $errors, 'inputlot' => $inputlot]);
+		$page_content = renderTemplate('templates/addlot.php', ['cats' => $cats, 'errors' => $errors, 'inputlot' => $inputlot]);
 	}
 	else {
 			$page_content = renderTemplate('templates/lot.php', ['cats' => $cats, 'bets' => $bets, 'lot' => $inputlot]);
 	}
 }
 else {
-	$page_content = renderTemplate('templates/add.php', ['cats' => $cats]);
+	$page_content = renderTemplate('templates/addlot.php', ['cats' => $cats]);
 }
 
 $page_layout = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => 'Добавление нового лота', 'cats' => $cats]);

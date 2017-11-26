@@ -51,4 +51,17 @@ function searchUserByEmail($email, $users) {
     return $result;
 }
 
+function searchLotRate($lotid, $rates) {
+    $result = null;
+    if ($rates) {
+        foreach ($rates as $rate) {
+            if ($lotid == $rate['lotid']) {
+                $result = $rate['lotid'];
+                break;
+            }
+        }
+    }
+    return $result;
+}
+
 ?>
