@@ -27,6 +27,6 @@ $page_content = renderTemplate('templates/lot.php', ['lot' => $lot, 'bets' => $b
 
 $layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => $lot['lot-name'], 'cats' => $cats]);
 
-echo $layout_content;
+echo $layout_content; 
 
 ?>
