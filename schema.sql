@@ -9,25 +9,25 @@ CREATE TABLE categories (
 
 CREATE TABLE users (
 	user_id		int AUTO_INCREMENT PRIMARY KEY,
-	datereg		timestamp NOT NULL,
+	created_at	int(11) NOT NULL,
 	email		varchar(128) UNIQUE NOT NULL,
 	name		varchar(64) NOT NULL,
-	password	varchar(32) NOT NULL,
+	password	varchar(64) NOT NULL,
 	avatar		varchar(32),
 	contacts 	varchar (240) NOT NULL
 );
 
 CREATE TABLE lots (
 	lot_id		int AUTO_INCREMENT PRIMARY KEY,
-	datestart   timestamp NOT NULL,
+	created_at  int(11) NOT NULL,
 	lotname		varchar(128) NOT NULL,
 	description	text NOT NULL,
 	image		varchar(128) NOT NULL,
 	initprice	int UNSIGNED NOT NULL,
-	dateend		timestamp NOT NULL,
+	completed_at int(11) NOT NULL,
 	steprate 	int UNSIGNED NOT NULL,
 	user_id		int NOT NULL,
-	winner_id	int NOT NULL,
+	winner_id	int,
 	category_id int NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES users(user_id),
 	FOREIGN KEY (winner_id) REFERENCES users(user_id),
@@ -38,7 +38,7 @@ CREATE INDEX c_lot ON lots(lot_id);
 
 CREATE TABLE rates (
 	rate_id		int AUTO_INCREMENT PRIMARY KEY,
-	ratedate	timestamp NOT NULL,
+	created_at	int(11) NOT NULL,
 	rate 		int UNSIGNED NOT NULL,
 	user_id		int NOT NULL,
 	lot_id		int NOT NULL,
