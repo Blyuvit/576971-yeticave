@@ -10,13 +10,7 @@ if(!isset($_SESSION)) {
 <div>
     <?php if (isset($lot)): ?>
         <nav class="nav">
-            <ul class="nav__list container">
-                <?php foreach ($cats as $key => $value): ?>
-                    <li class="nav__item">
-                        <a href="all-lots.html"><?=$value['cat']; ?></a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+           <?=renderTemplate('templates/_categories.php', ['cats' => $cats]); ?>
         </nav>
         <section class="lot-item container">
             <h2><?=$lot['lot-name'] ?></h2>
