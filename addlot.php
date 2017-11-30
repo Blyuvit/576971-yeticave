@@ -22,27 +22,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (in_array($key, $required) && !$value) {
 			$errors [$key] = 'Это поле необходимо заполнить';			
 		}
-		if (in_array($key, $requiredint) && !ctype_digit($value)) {
-			$errors [$key] = 'Это поле должно быть числовое';
+		if (in_array($key, $requiredint) && $value && !ctype_digit($value)) {
+			$errors [$key] = 'Введите целое число больше 0';
 		}
 	}
 
 	if (!empty($_FILES['url']['name'])) {
 		$tmp_name = $_FILES['url']['tmp_name'];
 		$path = 'img/'.$_FILES['url']['name'];
-
-		$finfo = finfo_open(FILEINFO_MIME_TYPE);
-		$file_type = finfo_file($finfo, $tmp_name);
-		if ($file_type == "image/jpeg" && !$errors) {
+		$file_type = mime_content_type($tmp_name);
+		if (($file_type == 'image/jpeg' || $file_type == 'image/png') && !$errors) {
 			move_uploaded_file($tmp_name, $path);
 			$inputlot['url'] = $path;
 		}
 		else {
-			$errors['url'] = 'Загрузите картинку';
+			$errors['url'] = 'Загрузите файл в формате jpeg/png';
 		}
 	}
 	else {
-		$errors['url'] = 'Вы не загрузили файл';
+		$errors['url'] = 'Загрузите файл';
+	}
+
+	if ($inputlot['lot-date'] && strtotime($inputlot['lot-date']) <= $now = time()) {
+		$errors['lot-date'] = 'Введите любую дату после '.date('d.m.Y',$now);
+	}
+
+	if($inputlot['lot-date'] && date('d.m.Y', strtotime($inputlot['lot-date'])) != $inputlot['lot-date']) {
+		$errors['lot-date'] = 'Введите дату в формате дд.мм.гггг';
 	}
 
 	if (count($errors)) {
