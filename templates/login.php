@@ -16,7 +16,7 @@
     $errormsg = isset($errors['password']) ? $errors['password'] : ""; ?>
     <div class="form__item form__item--last <?=$iteminvalid ?>">
       <label for="password">Пароль</label>
-      <input id="password" type="text" name="password" placeholder="Введите пароль">
+      <input id="password" type="password" name="password" placeholder="Введите пароль">
       <span class="form__error"><?=$errors['password']?></span>
     </div>
     <button type="submit" class="button">Войти</button>
