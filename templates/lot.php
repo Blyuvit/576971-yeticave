@@ -2,21 +2,20 @@
 
 $betsqty = count($bets);
 
-if(!isset($_SESSION)) {
+if(isset($_SESSION['user'])) {
     session_start();
+    $user = $_SESSION['user'];
+}
+
+if (isset($rates)){
+    $lotrated = searchLotRate($lot_id, $rates);
 }
 
 ?>
 <div>
     <?php if (isset($lot)): ?>
         <nav class="nav">
-            <ul class="nav__list container">
-                <?php foreach ($cats as $key => $value): ?>
-                    <li class="nav__item">
-                        <a href="all-lots.html"><?=$value['cat']; ?></a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+           <?=renderTemplate('templates/_categories.php', ['cats' => $cats]); ?>
         </nav>
         <section class="lot-item container">
             <h2><?=$lot['lot-name'] ?></h2>
@@ -29,7 +28,7 @@ if(!isset($_SESSION)) {
                     <p class="lot-item__description"><?=$lot['message'] ?></p>
                 </div>
                 <div class="lot-item__right">
-                <?php if (isset($_SESSION['user']) && (!searchLotRate($lot_id, $rates))) : ?>
+                <?php if (isset($user) && !isset($lotrated)) : ?>
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
                             10:54:12

@@ -1,11 +1,5 @@
   <nav class="nav">
-    <ul class="nav__list container">
-      <?php foreach($cats as $key => $value): ?>
-        <li class="nav__item">
-          <a href="all-lots.html"><?=$value['cat'] ?></a>
-        </li>
-      <?php endforeach; ?>
-    </ul>
+    <?=renderTemplate('templates/_categories.php', ['cats' => $cats]); ?>
   </nav>
   <?php $forminvalid = isset($errors) ? "form--invalid" : ""; ?>
   <form class="form container <?=$forminvalid ?>" action="login.php" method="post">
@@ -22,7 +16,7 @@
     $errormsg = isset($errors['password']) ? $errors['password'] : ""; ?>
     <div class="form__item form__item--last <?=$iteminvalid ?>">
       <label for="password">Пароль</label>
-      <input id="password" type="text" name="password" placeholder="Введите пароль">
+      <input id="password" type="password" name="password" placeholder="Введите пароль">
       <span class="form__error"><?=$errors['password']?></span>
     </div>
     <button type="submit" class="button">Войти</button>

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Подключает переданный файл, захватывает его содержимое
+ *
+ * @param $template_path string Путь к файлу-шаблону
+ * @param $template_data array Массив с данными шаблона
+ *
+ * @return $template_content string Сгенерированный HTML код страницы
+ */
+
 function renderTemplate($template_path, $template_data) 
 {
 	if (file_exists($template_path))
@@ -15,6 +24,14 @@ function renderTemplate($template_path, $template_data)
 	}
 	return $template_content;
 }
+
+/**
+ * Возвращает время в относительном формате: сколько минут или часов назад была сделана ставка
+ *
+ * @param $bettime int Время в формате временной метки
+ *
+ * @return $timepassed string Время в относительном формате
+ */
 
 function bettimeformat ($bettime)
 {
@@ -40,6 +57,15 @@ function bettimeformat ($bettime)
     return $timepassed;
 }
 
+/**
+ * Осуществляет поиск пользователя по его e-mail
+ *
+ * @param $email string E-mail пользователя
+ * @param $users array Массив существующих пользователей
+ *
+ * @return $result array Найденный пользователь или null
+ */
+
 function searchUserByEmail($email, $users) {
     $result = null;
     foreach ($users as $user) {
@@ -63,5 +89,20 @@ function searchLotRate($lotid, $rates) {
     }
     return $result;
 }
+
+/*function connectDB($host, $user, $password, $database) {
+    try {
+        $link = mysqli_connect($host, $user, $password, $database);
+        if (!$link) { 
+            $error = mysqli_connect_error();
+            throw new Exception($error);  
+        }    
+    }
+    catch (Exception $e) {
+        echo $e->getMessage();
+        die;
+    }
+    return $link;
+}*/
 
 ?>

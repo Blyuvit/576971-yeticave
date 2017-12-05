@@ -1,4 +1,7 @@
 <?php
+require_once 'functions.php';
+require_once 'mysql_helper.php';
+require_once 'init.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$inputrate = $_POST;
