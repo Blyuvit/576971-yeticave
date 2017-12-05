@@ -1,11 +1,14 @@
 <?php
-if(!isset($_SESSION)) {
+$is_auth = false;
+if (!isset($_SESSION)) {
     session_start();
 }
-if($is_auth = isset($_SESSION['user'])) {
+if(isset($_SESSION['user'])) {   
     $user_name = $_SESSION['user']['name'];
     $user_avatar = $_SESSION['user']['avatar'];
+    $is_auth = true;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -52,7 +55,6 @@ if($is_auth = isset($_SESSION['user'])) {
             </nav>
         </div>
     </header>
-
     <main class="content">
         <?=$content ?>
     </main>

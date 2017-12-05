@@ -90,4 +90,19 @@ function searchLotRate($lotid, $rates) {
     return $result;
 }
 
+/*function connectDB($host, $user, $password, $database) {
+    try {
+        $link = mysqli_connect($host, $user, $password, $database);
+        if (!$link) { 
+            $error = mysqli_connect_error();
+            throw new Exception($error);  
+        }    
+    }
+    catch (Exception $e) {
+        echo $e->getMessage();
+        die;
+    }
+    return $link;
+}*/
+
 ?>

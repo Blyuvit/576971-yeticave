@@ -2,11 +2,8 @@
 
 $betsqty = count($bets);
 
-if(!isset($_SESSION)) {
+if(isset($_SESSION['user'])) {
     session_start();
-    $user = $_SESSION['user'];
-}
-else {
     $user = $_SESSION['user'];
 }
 
@@ -31,7 +28,7 @@ if (isset($rates)){
                     <p class="lot-item__description"><?=$lot['message'] ?></p>
                 </div>
                 <div class="lot-item__right">
-                <?php if ($user && !isset($lotrated)) : ?>
+                <?php if (isset($user) && !isset($lotrated)) : ?>
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
                             10:54:12
