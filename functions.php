@@ -33,7 +33,7 @@ function renderTemplate($template_path, $template_data)
  * @return $timepassed string Время в относительном формате
  */
 
-function bettimeformat ($bettime)
+function rateTimeFormat ($bettime)
 {
     $now = strtotime('now');
     $timediff=($now-$bettime)/3600;
@@ -58,51 +58,67 @@ function bettimeformat ($bettime)
 }
 
 /**
- * Осуществляет поиск пользователя по его e-mail
+ * Осуществляет поиск ставок, сделанных пользователем
  *
- * @param $email string E-mail пользователя
- * @param $users array Массив существующих пользователей
+ * @param $user_id int Идентификатор пользователя
+ * @param $rates array Массив ставок по выбранному лоту
  *
- * @return $result array Найденный пользователь или null
+ * @return $result boolean Ставка или есть, или нет
  */
 
-function searchUserByEmail($email, $users) {
-    $result = null;
-    foreach ($users as $user) {
-        if ($email == $user['email']) {
-            $result = $user;
-            break;
-        }
-    }
-    return $result;
-}
-
-function searchLotRate($lotid, $rates) {
-    $result = null;
-    if ($rates) {
-        foreach ($rates as $rate) {
-            if ($lotid == $rate['lotid']) {
-                $result = $rate['lotid'];
-                break;
+function searchLotRated($user_id, $rates) {
+    $lotrated = false;
+    foreach ($rates as $key => $value) {
+            if ($value['user_id'] == $user_id) {
+                    $lotrated = true;
+                    break;
             }
-        }
     }
-    return $result;
+    return $lotrated;
 }
 
-/*function connectDB($host, $user, $password, $database) {
-    try {
-        $link = mysqli_connect($host, $user, $password, $database);
-        if (!$link) { 
-            $error = mysqli_connect_error();
-            throw new Exception($error);  
-        }    
+function searchLotCreated($user_id, $lot) {
+    $lotcreated = false;
+    if ($lot['user_id'] == $user_id) {
+            $lotcreated = true;
     }
-    catch (Exception $e) {
-        echo $e->getMessage();
-        die;
+    return $lotcreated;
+}
+
+function searchLotClosed($lot) {
+    $lotclosed = true;
+    if ($lot['completed_at'] <= strtotime('now')) {
+            $lotcreated = false;
     }
-    return $link;
-}*/
+    return $lotcreated;
+}
+
+function lotTimeRemaining($completed_at) {
+
+    date_default_timezone_set('Europe/Moscow');
+    $lot_time_remaining = "00:00";
+    $now = strtotime('now');
+    $timediff = $completed_at - $now;
+    $diff = $timediff/86400;
+    if ($diff > 1) {
+        $daydiff = floor($diff);
+        $lot_time_remaining = $daydiff.' дн. '.gmdate("H:i",$timediff);
+    }
+    else {
+        if ($diff > 0) {
+            $lot_time_remaining = gmdate("H:i", $timediff);
+        }
+    }
+    return $lot_time_remaining;
+}
+
+function showError($mysqli_error) {
+    $categories = [];
+    $error = $mysqli_error;
+    $page_content = renderTemplate('templates/error.php', ['error' => $error]);
+    $layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => 'Ошибка', 'categories' => $categories]);
+    echo $layout_content;
+    exit();
+}  
 
 ?>
