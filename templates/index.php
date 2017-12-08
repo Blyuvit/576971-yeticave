@@ -37,4 +37,5 @@
             <?php endforeach; ?>
         </ul>
     </section>
+<?=renderTemplate('templates/_pagination.php', ['pages' => $pages, 'pagesqty' => $pagesqty, 'page' => $page]); ?>
 </div>
