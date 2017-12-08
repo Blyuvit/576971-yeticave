@@ -1,5 +1,5 @@
   <nav class="nav">
-    <?=renderTemplate('templates/_categories.php', ['cats' => $cats]); ?>
+    <?=renderTemplate('templates/_categories.php', ['categories' => $categories]); ?>
   </nav>
   <?php $forminvalid = isset($errors) ? "form--invalid" : ""; ?>
   <form class="form container <?=$forminvalid ?>" action="login.php" method="post">

@@ -4,7 +4,8 @@ USE yeticave;
 
 CREATE TABLE categories (
 	category_id	int AUTO_INCREMENT PRIMARY KEY,
-	catname		varchar(128) NOT NULL
+	catname		varchar(128) NOT NULL,
+	catimage	varchar(32)
 );
 
 CREATE TABLE users (

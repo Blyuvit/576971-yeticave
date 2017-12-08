@@ -1,7 +1,7 @@
 <ul class="nav__list container">
-    <?php foreach ($cats as $key => $value): ?>
+    <?php foreach ($categories as $key => $value): ?>
       <li class="nav__item">
-        <a href="all-lots.html"><?=$value['cat']; ?></a>
+        <a href="all-lots.html"><?=$value['catname']; ?></a>
       </li>
     <?php endforeach; ?>
 </ul>
