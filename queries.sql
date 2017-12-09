@@ -46,11 +46,11 @@ VALUES
 	(1511246269, 10000, 2, 3),
 	(1511870661, 9000, 3, 5);
 
---Список всех категорий
+#Список всех категорий
 
 SELECT catname FROM categories;
 
---Самые новые открытые лоты
+#Самые новые открытые лоты
 
 SELECT  lotname, 
 		initprice,
@@ -77,15 +77,15 @@ LEFT JOIN (SELECT rates.rate_id,
 ON lots.lot_id = groupedrates.lot_id
 WHERE  	lots.completed_at > UNIX_TIMESTAMP(NOW()) ORDER BY lots.created_at DESC;
 
---Поиск лота по названию или описанию
+#Поиск лота по названию или описанию
 
 SELECT * FROM `lots` WHERE (lotname LIKE '%куртка%' OR description LIKE '%куртка%');
 
---Обновление названия лота по его идентификатору
+#Обновление названия лота по его идентификатору
 
 UPDATE lots SET lotname = 'Новое название' WHERE lot_id = 5;
 
---Самые свежие ставки для лота по его идентификатору
+#Самые свежие ставки для лота по его идентификатору
 
 SELECT 	lotname,
 		rate,
