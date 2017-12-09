@@ -1,0 +1,11 @@
+{
+    "name": "blyuvit/yeticave",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Blyuvit",
+            "email": "julia_ivakina@yahoo.com"
+        }
+    ],
+    "require": {}
+}
