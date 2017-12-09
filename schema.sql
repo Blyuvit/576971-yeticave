@@ -37,6 +37,8 @@ CREATE TABLE lots (
 
 CREATE INDEX c_lot ON lots(lot_id);
 
+CREATE FULLTEXT INDEX lotsearch ON lots(lotname, description);
+
 CREATE TABLE rates (
 	rate_id		int AUTO_INCREMENT PRIMARY KEY,
 	created_at	int(11) NOT NULL,
@@ -48,3 +50,4 @@ CREATE TABLE rates (
 );
 
 CREATE INDEX c_rate ON rates(rate);
+
