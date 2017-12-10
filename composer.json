@@ -7,5 +7,7 @@
             "email": "julia_ivakina@yahoo.com"
         }
     ],
-    "require": {}
+    "require": {
+        "swiftmailer/swiftmailer": "^6.0"
+    }
 }

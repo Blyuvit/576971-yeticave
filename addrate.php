@@ -29,8 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && $inputrate['rate']) {
        			 }
         		else {
             			showError(mysqli_error($link));	
-       			 }
-				
+       			 }				
 		}
 }
 else {
