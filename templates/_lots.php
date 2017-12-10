@@ -11,7 +11,7 @@
                     <span class="lot__amount">Стартовая цена</span>
                     <span class="lot__cost"><?=htmlspecialchars($value['initprice']); ?><b class="rub">р</b></span>
                 </div>
-                <div class="lot__timer timer">
+                <div class="lot__timer timer <?php if ($value['completed_at'] <= strtotime('now')) echo "timer--finishing"; ?>">
                     <?=lotTimeRemaining($value['completed_at']) ?>
                 </div>
             </div>

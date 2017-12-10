@@ -8,7 +8,7 @@ require_once 'categories.php';
 $search = trim($_GET['search'] ?? '');
 $lots = [];
 $page = $_GET['page'] ?? 1;
-$pagelots = 3;
+$pagelots = 9;
 $pages = [];
 $pagesqty = NULL;
 $error = NULL;
