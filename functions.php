@@ -77,6 +77,15 @@ function searchLotRated($user_id, $rates) {
     return $lotrated;
 }
 
+/**
+ * Определяет наличие ставки пользователя по выбранному лоту
+ *
+ * @param $user_id int Идентификатор пользователя
+ * @param $lot array Массив с данными лота
+ *
+ * @return $lotcreated boolean Ставка уже сделана пользователем или нет
+ */
+
 function searchLotCreated($user_id, $lot) {
     $lotcreated = false;
     if ($lot['user_id'] == $user_id) {
@@ -85,13 +94,29 @@ function searchLotCreated($user_id, $lot) {
     return $lotcreated;
 }
 
+/**
+ * Определяет завершены ли торги по данному лоту
+ *
+ * @param $lot array Массив с данными лота
+ *
+ * @return $lotclosed boolean Торги завершены или нет
+ */
+
 function searchLotClosed($lot) {
-    $lotclosed = true;
+    $lotclosed = false;
     if ($lot['completed_at'] <= strtotime('now')) {
-            $lotcreated = false;
+            $lotclosed = true;
     }
-    return $lotcreated;
+    return $lotclosed;
 }
+
+/**
+ * Определяет оставшееся время до окончания торгов
+ *
+ * @param $completed_at int Дата завершения торгов в формате временной метки
+ *
+ * @return $lot_time_remaining string/date Оставшееся время в количестве дней, часов и минут
+ */
 
 function lotTimeRemaining($completed_at) {
 
@@ -111,6 +136,13 @@ function lotTimeRemaining($completed_at) {
     }
     return $lot_time_remaining;
 }
+
+/**
+ * Выводит ошибку функции MySQLi в отдельный шаблон
+ *
+ * @param $mysqli_error string Cообщение об ошибке последнего вызова функции MySQLi
+ *
+ */
 
 function showError($mysqli_error) {
     $categories = [];

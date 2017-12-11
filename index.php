@@ -4,6 +4,7 @@ require_once 'functions.php';
 require_once 'mysql_helper.php';
 require_once 'init.php';
 require_once 'categories.php';
+require_once 'getwinner.php';
 
 $lots = [];
 $page = $_GET['page'] ?? 1;

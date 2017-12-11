@@ -13,7 +13,7 @@ if (isset($_SESSION['user'])) {
 	$user_id = $_SESSION['user']['user_id'];
 }
 
-$sql1 = 'SELECT rates.rate_id, rate, rates.created_at, lots.lot_id, lotname, image, completed_at, catname FROM rates JOIN lots ON rates.lot_id = lots.lot_id JOIN categories ON lots.category_id = categories.category_id WHERE rates.user_id='.$user_id;
+$sql1 = 'SELECT rates.rate_id, rate, rates.created_at, lots.lot_id, lotname, winner_id, image, completed_at, contacts FROM rates JOIN lots ON rates.lot_id = lots.lot_id JOIN users ON rates.user_id = users.user_id WHERE rates.user_id='.$user_id;
 $result1 = mysqli_query($link, $sql1);
 if ($result1) {
         $rates = mysqli_fetch_all($result1, MYSQLI_ASSOC);
