@@ -103,9 +103,9 @@ function searchLotCreated($user_id, $lot) {
  */
 
 function searchLotClosed($lot) {
-    $lotclosed = true;
+    $lotclosed = false;
     if ($lot['completed_at'] <= strtotime('now')) {
-            $lotclosed = false;
+            $lotclosed = true;
     }
     return $lotclosed;
 }

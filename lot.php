@@ -9,7 +9,7 @@ $lot = [];
 $lot_id = null;
 $lotrated = false;
 $lotcreated = false;
-$lotclosed = true;
+$lotclosed = false;
 $user_id = null;
 $rates = [];
 $ratesqty = 0;
@@ -35,7 +35,7 @@ if (isset($_GET['lot_id'])) {
 		    	else {
 		    			$lot = mysqli_fetch_array($result1, MYSQLI_ASSOC);
 		    			$lotcreated = searchLotCreated($user_id, $lot);
-		    			$lotclosed = searchLotClosed($lot_id);
+		    			$lotclosed = searchLotClosed($lot);
 		    	}
 	    }
 	    else {
@@ -71,7 +71,7 @@ if (isset($_GET['err'])) {
 				 } 
 }
 
-$page_content = renderTemplate('templates/lot.php', ['lot' => $lot, 'categories' => $categories, 'rates' => $rates, 'user_id' => $user_id, 'ratesqty' => $ratesqty, 'lotrated' => $lotrated, 'lotcreated' => $lotcreated, 'lotclosed' => $lotcreated, 'error' => $error, 'maxrate' => $maxrate]);
+$page_content = renderTemplate('templates/lot.php', ['lot' => $lot, 'categories' => $categories, 'rates' => $rates, 'user_id' => $user_id, 'ratesqty' => $ratesqty, 'lotrated' => $lotrated, 'lotcreated' => $lotcreated, 'lotclosed' => $lotclosed, 'error' => $error, 'maxrate' => $maxrate]);
 
 $layout_content = renderTemplate('templates/layout.php', ['content' => $page_content, 'title' => $lot['lotname'], 'categories' => $categories]);
 
