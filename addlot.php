@@ -21,8 +21,8 @@ else {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-		$required = ['lotname', 'category_id', 'description', 'initprice', 'steprate', 'completed_at', 'image'];
-		$requiredint = ['rate', 'steprate'];
+		$required = ['lotname', 'category_id', 'description', 'initprice', 'steprate', 'completed_at'];
+		$requiredint = ['initprice', 'steprate'];
 		$inputlot = $_POST;
 		$errors = [];
 
@@ -35,11 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				}
 		}
 
-		if (!empty($_FILES['image']['name'])) {
-				$tmp_name = $_FILES['image']['tmp_name'];
+		if (empty($_FILES['image']['name'])) {
+			$errors['image'] = 'Загрузите файл';
+		}
+		else {
+			$tmp_name = $_FILES['image']['tmp_name'];
 				$path = 'img/'.$_FILES['image']['name'];
 				$file_type = mime_content_type($tmp_name);
-				if (($file_type == 'image/jpeg' || $file_type == 'image/png') && !$errors) {
+				if (($file_type == 'image/jpeg' || $file_type == 'image/png' && !$errors)) {
 						move_uploaded_file($tmp_name, $path);
 						$inputlot['image'] = $path;
 				}
@@ -47,10 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						$errors['image'] = 'Загрузите файл в формате jpeg/png';
 				}
 		}
-		else {
-				$errors['image'] = 'Загрузите файл';
-		}
-
+		
 		if ($inputlot['completed_at'] && strtotime($inputlot['completed_at']) <= $now = time()) {
 				$errors['completed_at'] = 'Введите любую дату после '.date('d.m.Y',$now);
 		}

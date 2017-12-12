@@ -13,8 +13,8 @@
       <input id="lot-name" type="text" name="lotname" placeholder="Введите наименование лота" value="<?=$inputvalue; ?>">
       <span class="form__error">Введите наименование лота</span>
     </div>
-    <?php $iteminvalid = isset($errors['catname']) ? "form__item--invalid" : ""; 
-    $selected = isset($inputlot['catname']) ? "" : "selected"; ?>
+    <?php $iteminvalid = isset($errors['category_id']) ? "form__item--invalid" : ""; 
+    $selected = isset($inputlot['category_id']) ? "" : "selected"; ?>
     <div class="form__item <?=$iteminvalid; ?>">
       <label for="category">Категория</label>
       <select id="category" name="category_id">
