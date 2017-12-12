@@ -5,18 +5,12 @@ require_once 'functions.php';
 require_once 'mysql_helper.php';
 require_once 'init.php';
 require_once 'categories.php';
+require_once 'user.php';
 
-$user_id = null;
 
-if(!isset($_SESSION)) {
-    	session_start();
-}
-if(!isset($_SESSION['user'])) {
+if(!isset($user_id)) {
 		http_response_code(403);
 	    exit ();
-}
-else {
-		$user_id = $_SESSION['user']['user_id'];
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

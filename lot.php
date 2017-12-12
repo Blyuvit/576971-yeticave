@@ -4,25 +4,17 @@ require_once 'functions.php';
 require_once 'mysql_helper.php';
 require_once 'init.php';
 require_once 'categories.php';
+require_once 'user.php';
 
 $lot = [];
 $lot_id = null;
 $lotrated = false;
 $lotcreated = false;
 $lotclosed = false;
-$user_id = null;
 $rates = [];
 $ratesqty = 0;
 $error = null;
 $maxrate = null;
-
-
-if(!isset($_SESSION)) {
-    session_start();
-}
-if (isset($_SESSION['user'])) {
-	$user_id = $_SESSION['user']['user_id'];
-}
 
 if (isset($_GET['lot_id'])) {
 	    $lot_id = intval($_GET['lot_id']);
