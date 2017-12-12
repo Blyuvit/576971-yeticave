@@ -4,7 +4,7 @@
 <div class="container">
   <section class="lots">
     <?php $searchmsg=isset($search) ? $search : ''; ?>
-    <h2>Результаты поиска по запросу «<span><?=$searchmsg ?></span>»</h2>
+    <h2>Результаты поиска по запросу «<span><?=htmlspecialchars($searchmsg) ?></span>»</h2>
     <?php $errormsg=isset($error) ? $error : ''?>
     <p class="error"><?=$errormsg ?></p>
     <ul class="lots__list">

@@ -4,14 +4,14 @@
            <?=renderTemplate('templates/_categories.php', ['categories' => $categories]); ?>
         </nav>
         <section class="lot-item container">
-            <h2><?=$lot['lotname'] ?></h2>
+            <h2><?=htmlspecialchars($lot['lotname']) ?></h2>
             <div class="lot-item__content">
                 <div class="lot-item__left">
                     <div class="lot-item__image">
-                        <img src="<?=$lot['image'] ?>" width="730" height="548" alt="Изображение лота">
+                        <img src="<?=htmlspecialchars($lot['image']) ?>" width="730" height="548" alt="Изображение лота">
                     </div>
                     <p class="lot-item__category">Категория: <span><?=$lot['catname'] ?></span></p>
-                    <p class="lot-item__description"><?=$lot['description'] ?></p>
+                    <p class="lot-item__description"><?=htmlspecialchars($lot['description']) ?></p>
                 </div>
                 <div class="lot-item__right">
                 <?php if ($user_id && !$lotrated && !$lotcreated && !$lotclosed) : ?>
@@ -51,7 +51,7 @@
                         <?php foreach ($rates as $key => $value): ?>
                             <table class="history__list">
                                 <tr class="history__item">
-                                    <td class="history__name"><?=$value['name'] ?></td>
+                                    <td class="history__name"><?=htmlspecialchars($value['name']) ?></td>
                                     <td class="history__price"><?=$value['rate'] ?> р</td>
                                     <td class="history__time"><?=rateTimeFormat($value['created_at']); ?></td>
                                 </tr>

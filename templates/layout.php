@@ -35,10 +35,10 @@ if(isset($_SESSION['user'])) {
             <nav class="user-menu">
                 <?php if ($is_auth == true): ?>
                     <div class="user-menu__image">
-                        <img src="<?=$user_avatar?>" width="40" height="40" alt="">
+                        <img src="<?=htmlspecialchars($user_avatar)?>" width="40" height="40" alt="">
                     </div>
                     <div class="user-menu__logged">
-                        <p><?=$user_name?></p>
+                        <p><?=htmlspecialchars($user_name) ?></p>
                     </div>
                         <div class="user-menu__logged" style="margin-left: 15px">
                             <a href="logout.php">Выйти</a>
