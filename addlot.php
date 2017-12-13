@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$tmp_name = $_FILES['image']['tmp_name'];
 				$path = 'img/'.$_FILES['image']['name'];
 				$file_type = mime_content_type($tmp_name);
-				if (($file_type == 'image/jpeg' || $file_type == 'image/png' && !$errors)) {
+				if ($file_type == 'image/jpeg' || $file_type == 'image/png' && !$errors) {
 						move_uploaded_file($tmp_name, $path);
 						$inputlot['image'] = $path;
 				}
