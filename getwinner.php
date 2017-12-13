@@ -39,14 +39,19 @@ foreach ($lotsclosed as $key => $value) {
 		$transport->setUsername('doingsdone@mail.ru');
 		$transport->setPassword('rds7BgcL');
 
-
 		$message = new Swift_Message("Ваша ставка победила");
+		$message->setTo([$lotinfo['email'] => $lotinfo['name']]);
 		$message->setTo([$lotinfo['email'] => $lotinfo['name']]);
 		$message->setBody($page, 'text/html');
 		$message->setFrom("doingsdone@mail.ru", "Yeticave");
 						
 		$mailer = new Swift_Mailer($transport);
-		$mailer->send($message);
+		try {
+			 	$result = $mailer->send($message);
+		}
+		catch (\Swift_TransportException $Ste) {
+    		
+		}
 }
 
 		

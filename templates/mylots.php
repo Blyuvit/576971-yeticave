@@ -16,7 +16,7 @@
             <div class="timer <?php if ($value['completed_at'] <= strtotime('now')) echo "timer--finishing"; ?>"><?=lotTimeRemaining($value['completed_at']) ?></div>
           </td>
           <td class="rates__price">
-            <?=$value['rate']) ?>
+            <?=$value['rate'] ?>
           </td>
           <td class="rates__time">
             <?=rateTimeFormat($value['created_at']) ?>
